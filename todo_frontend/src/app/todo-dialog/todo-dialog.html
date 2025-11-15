@@ -1,0 +1,40 @@
+
+<mat-dialog-content>
+<h2 mat-dialog-title>{{tittle}}</h2>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="todo.title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="todo.description"></textarea>
+  </mat-form-field>
+
+ <mat-form-field class="w-full" appearance="fill">
+  <mat-label>Todo Tags</mat-label>
+
+  <mat-chip-grid #templateChipGrid aria-label="Todo tags">
+    <mat-chip-row *ngFor="let tag of todo.tags; let i = index" (removed)="removeTag(i)">
+      {{ tag }}
+      <button matChipRemove [attr.aria-label]="'remove tag ' + tag">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+  </mat-chip-grid>
+
+  <input
+    placeholder="Add tag..."
+    [matChipInputFor]="templateChipGrid"
+    (matChipInputTokenEnd)="addTag($event)"
+  />
+   <mat-hint>Please press Enter to add tag before clicking save</mat-hint>
+</mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>

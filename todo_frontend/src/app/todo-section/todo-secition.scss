@@ -1,0 +1,73 @@
+@use '@angular/material' as mat;
+
+/* Styles for the tag list */ 
+ul {
+  list-style-type: none; /* remove bullets */
+  padding: 0;
+  margin: 0;
+  display: flex;         /* inline layout */
+  flex-wrap: wrap;       /* wrap if too many tags */
+  gap: 6px;
+}
+
+li {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.delete-btn {
+  background-color: whitesmoke;
+}
+
+.delete-btn:hover {
+  background-color: #343434;
+}
+
+.delete-btn .mat-icon {
+  color: #ff1744;
+}
+
+.status-toggle-wrapper {
+  display: flex;
+  justify-content: center; // or left/right as needed
+  align-items: center;
+}
+
+.stat-slider {
+  @include mat.slide-toggle-overrides((
+    selected-track-color: green,
+    unselected-track-color: red,
+    track-height: 27px,
+    selected-hover-track-color: green,
+    unselected-hover-track-color: red,
+    selected-track-outline-color: green,
+    unselected-pressed-track-color: red,
+    selected-pressed-track-color: green,
+    track-outline-color: red,
+    selected-handle-size: 10px,
+    unselected-handle-size: 10px,
+  ));
+}
+.status-toggle-wrapper {
+  display: flex;
+  justify-content: left; // or left/right as needed
+  align-items: center;
+}
+
+ .editbutton {
+  @include mat.button-overrides((
+    
+  ));
+}
+
+.filter-input{
+  @include mat.theme((
+  density:(
+    scale: -3
+  )
+  ));
+}
+
