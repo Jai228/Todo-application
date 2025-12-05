@@ -3,6 +3,7 @@ package com.example.Todo.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,12 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/todos")
 @CrossOrigin(origins = "http://localhost:4200") // Allow Angular frontend
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 public class TodoController {
-
-    private final TodoService todoService;
-    private final TodoRepository todoRepository;
-    private final UserRepository userRepository;
+@Autowired
+    private  TodoService todoService;
+    private  TodoRepository todoRepository;
+    private  UserRepository userRepository;
 
     // ✅ Create or get a dummy user automatically
     private User getOrCreateDummyUser() {
